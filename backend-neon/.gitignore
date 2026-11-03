@@ -1,0 +1,7 @@
+.neon
+node_modules/
+.env
+.env.*
+!.env.example
+.neon-api/
+coverage/

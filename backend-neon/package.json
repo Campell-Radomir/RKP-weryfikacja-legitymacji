@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@neon/config": "^1.10.1",
+    "@neon/env": "^1.6.9",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node_modules/.bin/tsc --noEmit",
+    "test": "node_modules/.bin/tsx --test backend-neon/*.test.ts",
+    "setup:reader": "node ../scripts/setup-reader.mjs",
+    "deploy:api": "neon deploy --env .env.neon-api.local --no-env-pull"
+  }
+}

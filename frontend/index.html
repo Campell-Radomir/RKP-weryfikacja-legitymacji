@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weryfikacja legitymacji kapłańskiej — Rodzimy Kościół Polski</title>
+    <meta name="description" content="Sprawdź ważność legitymacji kapłańskiej Rodzimego Kościoła Polskiego.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Karol Michalak">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script defer src="scripts/contact.js"></script>
+    <script defer src="scripts/verification.js"></script>
+    <meta property="og:title" content="Weryfikacja legitymacji kapłańskiej — Rodzimy Kościół Polski">
+    <meta property="og:description" content="Sprawdź ważność legitymacji kapłańskiej Rodzimego Kościoła Polskiego.">
+    <meta property="og:locale" content="pl_PL">
+</head>
+<body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <header class="site-header">
+        <div class="container page-container header-content">
+            <a class="brand" href="https://rkp.org.pl/" aria-label="Rodzimy Kościół Polski — strona główna">
+                <img src="ico/RKPsun2.1.svg" width="60" height="60" alt="">
+                <span>Rodzimy Kościół Polski<small>Rodzima wiara · wspólnota · tradycja</small></span>
+            </a>
+            <a class="back-link" href="https://rkp.org.pl/">Strona główna RKP <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+    <main id="main" class="container page-container">
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">Rodzimy Kościół Polski</p>
+            <h1 id="page-title">Weryfikacja legitymacji<br class="desktop-break"> kapłańskiej</h1>
+            <p>Sprawdź ważność legitymacji kapłańskiej wydanej przez naszą wspólnotę.<br class="desktop-break"> Wpisz numer i rok widoczne na dokumencie.</p>
+        </section>
+        <div class="verification-layout">
+            <section class="verification-panel" aria-labelledby="form-title">
+                <span class="section-number" aria-hidden="true">01 / WERYFIKACJA</span>
+                <h2 id="form-title">Sprawdź legitymację</h2>
+                <p class="muted">Przepisz dane dokładnie tak, jak na legitymacji.</p>
+                <!-- Publiczny endpoint Neon Functions; dane dostępowe pozostają na backendzie. -->
+                <form id="verification-form" data-api-url="https://br-autumn-butterfly-baznp7u1-verify.compute.c-8.eu-central-1.aws.neon.tech/api/licences/verify">
+                    <fieldset>
+                        <legend>Numer legitymacji</legend>
+                        <div class="licence-fields">
+                            <span class="licence-prefix" aria-hidden="true">RKP /</span>
+                            <div class="number-field">
+                                <label for="licence-number">Numer</label>
+                                <input class="form-control" id="licence-number" name="number" type="text" inputmode="numeric" pattern="[0-9]+" placeholder="123456" required autocomplete="off" aria-describedby="number-hint" title="Wpisz numer legitymacji, używając wyłącznie cyfr.">
+                            </div>
+                            <span class="licence-separator" aria-hidden="true">/</span>
+                            <div class="year-field">
+                                <label for="licence-year">Rok</label>
+                                <input class="form-control" id="licence-year" name="year" type="text" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="2026" required autocomplete="off" aria-describedby="number-hint" title="Wpisz rok jako cztery cyfry.">
+                            </div>
+                        </div>
+                        <p id="number-hint" class="field-hint">Pełny format: RKP / numer / rok. Zachowaj zera na początku numeru.</p>
+                    </fieldset>
+                    <button id="verify-button" class="btn verify-button" type="submit"><span id="button-label">Sprawdź ważność</span><span aria-hidden="true">→</span></button>
+                </form>
+                <div id="verification-result" class="result-region" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden>
+                    <h3 id="result-title"></h3>
+                    <p id="result-message"></p>
+                    <div id="result-contact" hidden>
+                        <p>Możesz przeprowadzić dodatkową weryfikację telefonicznie lub mailowo:</p>
+                        <button class="contact-reveal" type="button" data-contact="phone">Pokaż numer telefonu</button>
+                        <button class="contact-reveal" type="button" data-contact="email">Pokaż adres e-mail</button>
+                    </div>
+                </div>
+                <noscript><p class="alert alert-warning mt-3">Do weryfikacji online i odsłonięcia kontaktu włącz JavaScript. Dane kontaktowe znajdziesz również na <a href="https://rkp.org.pl/">stronie głównej RKP</a>.</p></noscript>
+                <p id="script-error" class="alert alert-warning mt-3" hidden>Nie udało się uruchomić formularza. Odśwież stronę lub spróbuj później. Kontakt: <button class="contact-reveal" type="button" data-contact="phone">Pokaż numer telefonu</button> lub <button class="contact-reveal" type="button" data-contact="email">Pokaż adres e-mail</button>.</p>
+            </section>
+            <section class="document-panel" aria-labelledby="document-title">
+                <span class="section-number" aria-hidden="true">02 / GDZIE ZNALEŹĆ NUMER?</span>
+                <h2 id="document-title">Spójrz na pierwszą stronę</h2>
+                <p>Numer legitymacji znajduje się na <strong>pierwszej stronie ze zdjęciem</strong>, w rubryce „Numer legitymacji / Document Number”.</p>
+                <figure>
+                    <a href="images/legitymacja-wzor.png" target="_blank" rel="noopener" aria-label="Powiększ wzór legitymacji (nowa karta)">
+                        <img class="licence-example" src="images/legitymacja-wzor.png" width="826" height="527" alt="Wzór legitymacji kapłańskiej. Rubryka Numer legitymacji / Document Number znajduje się po prawej stronie, poniżej rangi. Przykładowy numer to RKP/01234/2026.">
+                    </a>
+                    <figcaption>Wzór legitymacji kapłańskiej <span>Kliknij, aby powiększyć ↗</span></figcaption>
+                </figure>
+            </section>
+        </div>
+        <aside class="help-section" aria-labelledby="help-title">
+            <div><h2 id="help-title">Potrzebujesz pomocy?</h2><p>W razie wątpliwości skontaktuj się z Rodzimym Kościołem Polskim.</p></div>
+            <div class="help-contacts">
+                <div><small>Telefon</small><button class="contact-reveal" type="button" data-contact="phone">Pokaż numer telefonu</button></div>
+                <div><small>E-mail</small><button class="contact-reveal" type="button" data-contact="email">Pokaż adres e-mail</button></div>
+            </div>
+        </aside>
+    </main>
+    <footer class="site-footer container page-container"><span>Rodzimy Kościół Polski</span><span>Weryfikacja legitymacji kapłańskich</span></footer>
+</body>
+</html>
